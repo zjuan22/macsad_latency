@@ -8,7 +8,7 @@ plt.rcParams['axes.spines.bottom'] = True
 plt.rcParams['axes.spines.left'] = True 
 plt.rcParams['axes.axisbelow'] = True
 plt.rcParams['axes.axisbelow'] = True
-plt.rcParams['figure.figsize'] = 10, 4
+plt.rcParams['figure.figsize'] = 7, 3.5 
 
 
 markers = ["*","^","."]
@@ -48,9 +48,15 @@ ax = fig.add_subplot(111)
 
 
 linestyles = ['-', '--', '-.', ':']
-dashList = [(4,2,20,2),(2,5),(5,2),(4,10),(3,3,2,2)] 
-verde_oscuro="#003300"
+dashList = [(4,2,20,2),(2,3),(5,1),(4,3,2,2),(8,4,3,1)] 
+verde_oscuro="#006633"
 azul_cielo="#2248E1"
+
+fucsia="#DA22E1"
+cafe="#A91524"
+
+azul_mar="#161673"
+azul_claro="#1AE2E2"
 
 tomate="#E88411"
 verde_fosfo="#B2E835"
@@ -62,16 +68,18 @@ ax.plot(ind, nfpa_l2,  color=verde_oscuro, linestyle="-.", dashes=dashList[0], l
 ax.plot(ind, osnt_l3,  color="red",   dashes=dashList[1], lw=2)
 ax.plot(ind, nfpa_l3,  color="green", dashes=dashList[1], lw=2)
 
+ax.plot(ind, osnt_nu,  color=cafe,   dashes=dashList[2], lw=2)
+ax.plot(ind, nfpa_nu,  color=fucsia, dashes=dashList[2], lw=2)
+
+ax.plot(ind, osnt_nd,  color=azul_mar,   dashes=dashList[3], lw=2)
+ax.plot(ind, nfpa_nd,  color=azul_claro, dashes=dashList[3], lw=2)
+
+ax.plot(ind, osnt_al,  color="black",   dashes=dashList[4], lw=2)
+ax.plot(ind, nfpa_al,  color=tomate,    dashes=dashList[4], lw=2)
 
 #ax.set_xticks(ind+6*(width/2))
 #xticks = ax.xaxis.get_major_ticks()
 
-#xticks[3].set_visible(False)
-#xticks[7].set_visible(False)
-#xticks[11].set_visible(False)
-#xticks[12].set_visible(False)
-#xticks[16].set_visible(False)
-#xticks[20].set_visible(False)
 ax.set_xticklabels(x_values, fontsize=10)
 
 ax.set_ylabel('Throughput (Gbps)',fontsize=9)
@@ -85,24 +93,17 @@ ax.set_xlabel("Packet size (Bytes)", fontsize=9)
 ax.xaxis.set_label_coords(0.5,-0.2)
 ax.yaxis.grid(linestyle='--')
 
-#ax.text(1, -0.7, u'64',fontsize=10)
-#ax.text(4.8, -0.7, u'128',fontsize=10)
-#ax.text(8.8, -0.7, u'256',fontsize=10)
-#ax.text(14, -0.7, u'64',fontsize=10)
-#ax.text(17.8, -0.7, u'128',fontsize=10)
-#ax.text(21.8, -0.7, u'256',fontsize=10)
-#ax.text(9.45, -1.4, u'Number of cores',fontsize=10)
 ax.text(5, -1.2, u'Socket-mmap',fontsize=10)
 ax.text(19, -1.2, u'Netmap',fontsize=10)
 ax.text(33, -1.2, u'DPDK',fontsize=10)
 #ax.set_ylim([0,7.4])
 
-plt.legend(['OSNT-L2', 'NFPA-L2','OSNT-L3', 'NFPA-L3'   ], loc='upper right',frameon=False, fontsize= 11)
+plt.legend(['OSNT-L2', 'NFPA-L2','OSNT-L3', 'NFPA-L3', 'OSNT-NAT-UL', 'NFPA-NAT_UL', 'OSNT-NAT-DL', 'NFPA-NAT_DL', 'OSNT-Standalone','NFPA-Standalone'], loc='upper right',frameon=False, fontsize= 11)
 
 
 plt.tight_layout(pad=0.3, w_pad=0.5, h_pad=1)
 
 filename="rate_32burst_pkt"
 #plt.savefig("vxlan.png")
-#plt.savefig(filename+".eps")
-plt.savefig(filename+".svg")
+plt.savefig(filename+".eps")
+#plt.savefig(filename+".svg")

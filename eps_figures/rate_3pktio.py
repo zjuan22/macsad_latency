@@ -1,4 +1,4 @@
-import pandas as pd
+#import pandas as pd
 import matplotlib.pyplot as plt
 import numpy as np
 from cycler import cycler
@@ -100,4 +100,5 @@ plt.tight_layout(pad=0.3, w_pad=0.5, h_pad=1)
 
 filename="rate_pkt"
 #plt.savefig("vxlan.png")
-plt.savefig(filename+".eps")
+#plt.savefig(filename+".eps")
+plt.savefig(filename+".svg")
