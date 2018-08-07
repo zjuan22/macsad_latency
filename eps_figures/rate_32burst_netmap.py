@@ -27,25 +27,17 @@ osnt_al=[8.649,9.775,9.82,9.828,9.828,9.868]
 nfpa_al=[10,10,10,10,10,10]
 
 
-
 #l2 =      [np.nan,]
 #l3 =      [
 #nat_ul=   [857,np.nan]
 #nat_dl=   [875,np.nan]
 
- 
 ind = np.arange(len(x_values))
 
 width = 0.3
 fig = plt.figure()
 ax = fig.add_subplot(111)
 #ax.set_ylim([0, 10])
-
-#ax.bar([p + width for p in ind+0], l2, width, color= "#FFC72D", edgecolor="black",hatch="OO", lw=0.5, zorder = 0)
-#ax.bar([p + width for p in ind-0.3], l3, width, color="#B78ADF", edgecolor="black",hatch="..", lw=0.5, zorder = 0)
-#ax.bar([p + width for p in ind], nat_dl, width, color= "#E65D22", edgecolor="black",hatch="", lw=0.5, zorder = 0)
-#ax.bar([p + width for p in ind+0.3], nat_ul, width, color= "#06566E", edgecolor="black",hatch="//", lw=0.5, zorder = 0)
-
 
 linestyles = ['-', '--', '-.', ':']
 dashList = [(4,2,20,2),(2,3),(5,1),(4,3,2,2),(8,4,3,1)] 
@@ -80,30 +72,33 @@ ax.plot(ind, nfpa_al,  color=tomate,    dashes=dashList[4], lw=2)
 #ax.set_xticks(ind+6*(width/2))
 #xticks = ax.xaxis.get_major_ticks()
 
-ax.set_xticklabels(x_values, fontsize=10)
+font_size= 14
+ax.set_xticklabels(x_values, fontsize=font_size)
 
-ax.set_ylabel('Throughput (Gbps)',fontsize=9)
+ax.set_ylabel('Throughput (Gbps)',fontsize=font_size)
 #ax.yaxis.set_label_coords(-0.08,0.9)
 ax.spines['right'].set_visible(False)
 ax.spines['top'].set_visible(False)
 ax.yaxis.set_ticks_position('left')
 #ax.tick_params(axis='y',length=6)
 ax.xaxis.set_ticks_position('bottom')
-ax.set_xlabel("Packet size (Bytes)", fontsize=9)
+ax.set_xlabel("Packet size (Bytes)", fontsize=font_size)
 ax.xaxis.set_label_coords(0.5,-0.2)
 ax.yaxis.grid(linestyle='--')
 
-ax.text(5, -1.2, u'Socket-mmap',fontsize=10)
-ax.text(19, -1.2, u'Netmap',fontsize=10)
-ax.text(33, -1.2, u'DPDK',fontsize=10)
+#ax.text(5, -1.2, u'Socket-mmap',fontsize=font_size)
+#ax.text(19, -1.2, u'Netmap',fontsize=font_size)
+#ax.text(33, -1.2, u'DPDK',fontsize=font_size)
 #ax.set_ylim([0,7.4])
 
-plt.legend(['OSNT-L2', 'NFPA-L2','OSNT-L3', 'NFPA-L3', 'OSNT-NAT-UL', 'NFPA-NAT_UL', 'OSNT-NAT-DL', 'NFPA-NAT_DL', 'OSNT-Standalone','NFPA-Standalone'], loc='center right',frameon=False, fontsize= 11)
+leg= plt.legend(['OSNT-L2', 'NFPA-L2','OSNT-L3', 'NFPA-L3', 'OSNT-NAT-UL', 'NFPA-NAT_UL', 'OSNT-NAT-DL', 'NFPA-NAT_DL', 'OSNT-Standalone','NFPA-Standalone'], loc='center right',frameon=False, fontsize= 11)
 
+leg.get_frame().set_linewidth(0.0)
 
 plt.tight_layout(pad=0.3, w_pad=0.5, h_pad=1)
 
 filename="rate_32burst_netmap"
 #plt.savefig("vxlan.png")
 plt.savefig(filename+".eps")
-#plt.savefig(filename+".svg")
+plt.savefig(filename+".svg")
+plt.savefig(filename+".png")

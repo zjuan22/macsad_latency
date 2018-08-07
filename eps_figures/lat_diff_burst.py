@@ -57,9 +57,8 @@ ax.plot(ind, l2_32_dpdk,  color="blue",   dashes=dashList[0], lw=2 ,markerfaceco
 
 #ax.set_xticks(ind+6*(width/2))
 #xticks = ax.xaxis.get_major_ticks()
-
+font_size= 14
 ax.set_xticklabels(x_values, fontsize=10)
-
 ax.set_ylabel('Average latency ($\mu$s)',fontsize=10)
 #ax.yaxis.set_label_coords(-0.08,0.9)
 ax.spines['right'].set_visible(False)
@@ -67,17 +66,15 @@ ax.spines['top'].set_visible(False)
 ax.yaxis.set_ticks_position('left')
 #ax.tick_params(axis='y',length=6)
 ax.xaxis.set_ticks_position('bottom')
-ax.set_xlabel("Packet size (Bytes)", fontsize=9)
+ax.set_xlabel("Packet size (Bytes)", fontsize=10)
 ax.xaxis.set_label_coords(0.5,-0.2)
 ax.yaxis.grid(linestyle='--')
 
-#ax.text(5, -1.2, u'Socket-mmap',fontsize=10)
-#ax.text(19, -1.2, u'Netmap',fontsize=10)
-#ax.text(33, -1.2, u'DPDK',fontsize=10)
-#ax.set_ylim([0,7.4])
 
-#plt.legend(['1 Pkt Burst-Netmap','32 Pkt Burst-Netmap','128 Pkt Burst-Netmap','256 Pkt Burst-Netmap','16 Pkt Burst-DPDK','32 Pkt Burst-DPDK'], loc='center right',frameon=False, fontsize= 11)
-plt.legend(['1 Pkt Burst-Netmap','32 Pkt Burst-Netmap','128 Pkt Burst-Netmap','256 Pkt Burst-Netmap','16 Pkt Burst-DPDK','32 Pkt Burst-DPDK'], bbox_to_anchor=(0., 0.05, 1., .202), loc=3, ncol=3, mode="expand", borderaxespad=0., frameon=False, fontsize= 9)
+leg= plt.legend(['1 Pkt Burst-Netmap','32 Pkt Burst-Netmap','128 Pkt Burst-Netmap','256 Pkt Burst-Netmap','16 Pkt Burst-DPDK','32 Pkt Burst-DPDK'], bbox_to_anchor=(0., 0.05, 1., .202), loc=3, ncol=3, mode="expand", borderaxespad=0.,  fontsize= 9)
+
+leg.get_frame().set_linewidth(0.0)
+
 plt.tight_layout(pad=0.3, w_pad=0.5, h_pad=1)
 
 filename="lat_diff_burst"

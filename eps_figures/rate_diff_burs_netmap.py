@@ -54,27 +54,23 @@ ax.plot(ind, l2_32_dpdk,  color="blue",   dashes=dashList[0], lw=2 ,markerfaceco
 
 #ax.set_xticks(ind+6*(width/2))
 #xticks = ax.xaxis.get_major_ticks()
+font_size=14
+ax.set_xticklabels(x_values, fontsize=font_size)
 
-ax.set_xticklabels(x_values, fontsize=10)
-
-ax.set_ylabel('Throughput (Gbps)',fontsize=9)
-#ax.yaxis.set_label_coords(-0.08,0.9)
+ax.set_ylabel('Throughput (Gbps)',fontsize=font_size)
+#ax.yaxis.set_label_coords(-0.08,0.font_size)
 ax.spines['right'].set_visible(False)
 ax.spines['top'].set_visible(False)
 ax.yaxis.set_ticks_position('left')
 #ax.tick_params(axis='y',length=6)
 ax.xaxis.set_ticks_position('bottom')
-ax.set_xlabel("Packet size (Bytes)", fontsize=9)
+ax.set_xlabel("Packet size (Bytes)", fontsize=font_size)
 ax.xaxis.set_label_coords(0.5,-0.2)
 ax.yaxis.grid(linestyle='--')
 
-#ax.text(5, -1.2, u'Socket-mmap',fontsize=10)
-#ax.text(19, -1.2, u'Netmap',fontsize=10)
-#ax.text(33, -1.2, u'DPDK',fontsize=10)
-#ax.set_ylim([0,7.4])
+leg=plt.legend(['32 Pkt Burst-Netmap','128 Pkt Burst-Netmap','256 Pkt Burst-Netmap','16 Pkt Burst-DPDK','32 Pkt Burst-DPDK'], loc='center right', fontsize= 11)
 
-plt.legend(['32 Pkt Burst-Netmap','128 Pkt Burst-Netmap','256 Pkt Burst-Netmap','16 Pkt Burst-DPDK','32 Pkt Burst-DPDK'], loc='center right',frameon=False, fontsize= 11)
-
+leg.get_frame().set_linewidth(0.0)
 
 plt.tight_layout(pad=0.3, w_pad=0.5, h_pad=1)
 
@@ -82,4 +78,4 @@ filename="rate_diff_burst"
 #plt.savefig("vxlan.png")
 plt.savefig(filename+".eps")
 plt.savefig(filename+".png")
-#plt.savefig(filename+".svg")
+plt.savefig(filename+".svg")
